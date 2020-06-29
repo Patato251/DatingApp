@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj": {}
+    "c:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj": {
+    "c:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj",
+        "projectUniqueName": "c:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj",
         "projectName": "DatingApp.API",
-        "projectPath": "C:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj",
+        "projectPath": "c:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\DatingApp.API.csproj",
         "packagesPath": "C:\\Users\\Patrick Le\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\obj\\",
+        "outputPath": "c:\\Users\\Patrick Le\\desktop\\Sealadder\\Udemy\\DatingApp\\DatingApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Patrick Le\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -35,6 +35,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
