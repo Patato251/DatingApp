@@ -9,6 +9,7 @@ namespace DatingApp.API.Data
     public DataContext(DbContextOptions<DataContext> options) : base (options){}
 
     // Telling class about entity (reference where our values are being pulled from)
+    // Values == Table name created when scaffolding database
     public DbSet<Value> Values { get; set; } // Values is name for table generated
   }
 }
