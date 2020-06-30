@@ -1,5 +1,6 @@
 namespace DatingApp.API.Models
 // Setting up entity to use to get and set required values 
+// Bascially setting up similar to a schema
 {
   public class Value
   {
