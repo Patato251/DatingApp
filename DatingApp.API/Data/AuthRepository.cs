@@ -22,8 +22,8 @@ namespace DatingApp.API.Data
       // Compare the hashed password with the password
       var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username); // Accessing the user data by finding it in DB
 
-      // If Username is null/no entry, return null entry
-      if (username == null)
+      // If User is null/no entry, return null entry
+      if (user == null)
       {
         return null;
       }
