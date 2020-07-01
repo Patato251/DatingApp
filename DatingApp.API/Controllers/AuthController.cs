@@ -20,7 +20,13 @@ namespace DatingApp.API.Controllers
     [HttpPost ("register")]
     public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
     {
-      // validate requests 
+      // validate requests to prevent requests that should provide errors from occuring 
+      // E.g. Blank username or password
+
+      // Only if APIController is not used
+      /* if (!ModelState.IsValid)
+            return BadRequest(ModelState)
+      */
 
       // Make the username lowercase to prevent duplicate entries
       userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
