@@ -7,7 +7,7 @@ namespace DatingApp.API.Controllers
 {
   // Attribute based routing (mapping endpoint routing)
   [Route("api/[controller]")] // http:localhost:5000/api/values
-  [ApiController]
+  [ApiController] // Attribute routing and validates request
   public class ValuesController : ControllerBase
   {
     // Need to inject datacontext into class to access database values 
