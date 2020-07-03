@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using DatingApp.API.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Controllers
 {
@@ -20,13 +20,14 @@ namespace DatingApp.API.Controllers
     }
 
     // GET api/values
-    [Authorize]
+    // [Authorize]
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetValues() // Using IAction to remove enumerable output
     {
       // Using local instantiated variable to store the database and access it as a 
       // list to access the database
-      var values =await _context.Values.ToListAsync();
+      var values = await _context.Values.ToListAsync();
 
       // Return Http 200 Ok response with values
       return Ok(values);
@@ -38,7 +39,7 @@ namespace DatingApp.API.Controllers
     public async Task<IActionResult> GetValue(int id)
     {
       // Using First or default to return either null or the first possible value
-      var value =await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
+      var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
 
       return Ok(value);
     }
