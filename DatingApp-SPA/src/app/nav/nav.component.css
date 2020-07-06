@@ -1,0 +1,4 @@
+/* Set the cursor to look like a pointer when hovering over menu */
+.dropdown-toggle, .dropdown-item {
+  cursor: pointer; 
+}
