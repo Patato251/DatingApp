@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
   // Creates an empty object to be used in transfer of data from the login process
   model: any = {};
 
-  constructor(public authService: AuthService, private alertify: AlertifyService) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,10 +20,12 @@ export class NavComponent implements OnInit {
   login() {
     // Receive the Observable from login by calling the login service method
     // Store the result from the login method into the local model var
-    this.authService.login(this.model).subscribe(next => {
+    this.authService.login(this.model).subscribe(next => { // Next Response
       this.alertify.success('The user has logged in Successfully');
-    }, error => {
+    }, error => { // Error response
       this.alertify.error(error);
+    }, () => { // Completed Response (can throw this into next method)
+      this.router.navigate(['/members']);
     });
   }
 
@@ -35,5 +38,6 @@ export class NavComponent implements OnInit {
   logOut() {
     localStorage.removeItem('token');
     this.alertify.message('Logged User Out');
+    this.router.navigate(['/home']);
   }
 }
