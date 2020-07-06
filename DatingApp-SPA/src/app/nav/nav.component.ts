@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,7 @@ export class NavComponent implements OnInit {
   // Creates an empty object to be used in transfer of data from the login process
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -19,21 +20,20 @@ export class NavComponent implements OnInit {
     // Receive the Observable from login by calling the login service method
     // Store the result from the login method into the local model var
     this.authService.login(this.model).subscribe(next => {
-      console.log('The user has logged in Successfully');
+      this.alertify.success('The user has logged in Successfully');
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 
   // Log in method to check status of user signed in
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn(); // replace original method with authService method for injection
   }
 
   // Removes token from local storage to log out
-  logOut () {
+  logOut() {
     localStorage.removeItem('token');
-    console.log('Logged User Out');
+    this.alertify.message('Logged User Out');
   }
 }

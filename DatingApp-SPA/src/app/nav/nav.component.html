@@ -24,7 +24,7 @@
   <!-- Implementing NgIf to add or remove dropdown according to sign in status -->
   <div *ngIf='loggedIn()' class="dropdown">
     <a class="dropdown-toggle text-light">
-      Welcome User
+      Welcome {{authService.decodedToken?.unique_name | titlecase}}
     </a>
 
     <div class="dropdown-menu">
