@@ -19,6 +19,8 @@ namespace DatingApp.API.Data
 
     public DbSet<User> Users { get; set; } // Table generated to store User data within database
 
+    public DbSet<Photo> Photos { get; set; }
+
     /* After every addition of a DbSet, need to migrate database to add new table of data*/
   }
 }

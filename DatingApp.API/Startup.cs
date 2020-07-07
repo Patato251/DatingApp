@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,9 +37,14 @@ namespace DatingApp.API
     {
       // Allow the app to see this service required for database querying
       services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))); // Provide with Db being used
-      services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(opt =>
+      {
+        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+      });
       services.AddCors(); // Enable Cors to be used
+      services.AddAutoMapper(typeof(DatingRepository).Assembly);
       services.AddScoped<IAuthRepository, AuthRepository>(); // Available for injection as it has been registered under the addscoped form
+      services.AddScoped<IDatingRepository, DatingRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
         options.TokenValidationParameters = new TokenValidationParameters 
         { 
@@ -48,7 +54,7 @@ namespace DatingApp.API
           ValidateIssuer = false,
           ValidateAudience = false
         };
-      }) ;// Tell the system it is Jwt Authorisation
+      });// Tell the system it is Jwt Authorisation
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
