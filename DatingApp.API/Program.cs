@@ -35,8 +35,8 @@ namespace DatingApp.API
           var logger = services.GetRequiredService<ILogger<Program>>();
           logger.LogError(ex, "An error has occurred during the migration process");
         }
-        host.Run();
       }
+      host.Run();
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
